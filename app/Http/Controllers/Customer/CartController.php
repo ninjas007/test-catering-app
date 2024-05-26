@@ -90,7 +90,7 @@ class CartController extends Controller
     public function checkout()
     {
         if ($this->cartRepository->checkout()) {
-            return redirect('order')->with('success', 'Checkout successfully');
+            return redirect('customer-order')->with('success', 'Checkout successfully');
         }
 
         return redirect()->back()->with('error', 'Checkout failed');

@@ -21,14 +21,14 @@
                             <span id="cartTotal"
                                 style="background-color: #f1f1f1; border-radius: 50%; padding: 2px 5px; position: absolute; top: -5px">0</span>
                         </div>
-                        <i class="fa fa-shopping-cart menu-icon"></i>
-                        <span class="text-icon">Cart</span>
+                        <i class="fa fa-shopping-cart menu-icon {{ $menu == 'cart' ? 'menu-icon-active' : '' }}"></i>
+                        <span class="text-icon {{ $menu == 'cart' ? 'text-icon-active' : '' }}">Cart</span>
                     </button>
                 </a>
                 <a href="{{ url('customer-order') }}">
                     <button class="btn-menubar">
-                        <i class="fa fa-users menu-icon"></i>
-                        <span class="text-icon">Orders</span>
+                        <i class="fa fa-users menu-icon {{ $menu == 'order' ? 'menu-icon-active' : '' }}"></i>
+                        <span class="text-icon {{ $menu == 'order' ? 'text-icon-active' : '' }}">Orders</span>
                     </button>
                 </a>
             @endif
