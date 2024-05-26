@@ -39,7 +39,7 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::post('/saveCart', [CartController::class, 'cart'])->name('saveCart');
     Route::post('/addQtyCart', [CartController::class, 'addQtyCart'])->name('addQtyCart');
     Route::post('/removeCart', [CartController::class, 'removeCart'])->name('removeCart');
-
+    Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 });
 
 // merchant

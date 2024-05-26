@@ -3,12 +3,21 @@
 namespace App\Repositories;
 
 use App\Models\Cart;
+use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class CartRepository extends BaseRepository
 {
     public function __construct(Cart $cart)
     {
         parent::__construct($cart);
+    }
+
+    public function getCarts()
+    {
+        $userId = auth()->user()->id;
+
+        return $this->model->where('user_id', $userId)->get();
     }
 
     public function getTotalCart()
@@ -51,6 +60,43 @@ class CartRepository extends BaseRepository
         } else {
             $data['user_id'] = $userId;
             return $this->create($data);
+        }
+    }
+
+    public function checkout()
+    {
+        try {
+            DB::beginTransaction();
+            $userId = auth()->user()->id;
+            $order = Order::create([
+                'user_id' => $userId,
+                'status' => 'pending',
+                'total' => $this->getTotalCart(),
+            ]);
+
+            $orderDetail = [];
+            foreach ($this->getCarts() as $cart) {
+                $orderDetail[] = [
+                    'menu_id' => $cart->menu_id,
+                    'quantity' => $cart->qty,
+                    'order_id' => $order->id,
+                    'subtotal' => $cart->menu->price * $cart->qty,
+                    'created_at' => now()
+                ];
+            }
+
+            DB::table('order_details')->insert($orderDetail);
+
+            // remove carts
+            $this->model->where('user_id', $userId)->delete();
+
+            DB::commit();
+            return true;
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            dd($th->getMessage());
+            return false;
         }
     }
 }

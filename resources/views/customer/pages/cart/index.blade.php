@@ -11,7 +11,13 @@
                     <div class="row g-0">
                         <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title">Total: {{ $cartTotal }}</h5>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title">Total: {{ $cartTotal }}</h5>
+                                    <form action="{{ route('cart.checkout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary btn-sm">Checkout</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
