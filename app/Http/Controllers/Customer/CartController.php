@@ -87,9 +87,14 @@ class CartController extends Controller
         }
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        if ($this->cartRepository->checkout()) {
+        $this->validate($request, [
+            'delivery_date' => 'required|date|after_or_equal:today',
+            'delivery_time' => 'required|date_format:H:i',
+        ]);
+
+        if ($this->cartRepository->checkout($request->all())) {
             return redirect('customer-order')->with('success', 'Checkout successfully');
         }
 

@@ -21,8 +21,8 @@
                             <div class="col-12 p-3">
                                 <table style="width: 100%">
                                     <tr>
-                                        <td width="20%">Date</td>
-                                        <td>: {{ $order->created_at }}</td>
+                                        <td width="20%">Delivery Date</td>
+                                        <td>: {{ $order->delivery_date }} {{ $order->delivery_time }}</td>
                                         <td align="right">
                                             <a href="{{ url('print-invoice?order_id=' . $order->id . '') }}" target="_blank"
                                                 class="btn btn-sm btn-info">

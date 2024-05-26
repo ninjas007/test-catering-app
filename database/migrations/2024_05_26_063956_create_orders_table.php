@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->enum('status', ['pending', 'completed']);
             $table->decimal('total', 15, 0);
+            $table->date('delivery_date');
+            $table->time('delivery_time');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

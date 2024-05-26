@@ -17,12 +17,16 @@ class OrderSeeder extends Seeder
         Order::create([
             'user_id' => 2,
             'status' => 'pending',
+            'delivery_date' => date('Y-m-d', strtotime('+2 days')),
+            'delivery_time' => date('H:i', strtotime('+2 days')),
             'total' => 55000,
         ]);
 
         Order::create([
             'user_id' => 3,
             'status' => 'completed',
+            'delivery_date' => date('Y-m-d', strtotime('+2 days')),
+            'delivery_time' => date('H:i', strtotime('+2 days')),
             'total' => 55000,
         ]);
     }

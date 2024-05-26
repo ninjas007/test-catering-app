@@ -7,6 +7,15 @@
     <div class="container" @if ($menus->count() <= 3) style="height: 80vh" @endif>
         <div class="row justify-content-center mb-2">
             <div class="col-12 px-4">
+                <form action="" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" name="search" class="form-control" placeholder="Search menu or cathering"
+                            value="{{ request('search') }}">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 px-4">
                 @forelse ($menus as $menu)
                     <div class="card mb-3">
                         <div class="row g-0">

@@ -31,8 +31,8 @@
     <div class="invoice-container">
         <table>
             <tr>
-                <td width="10%">Date</td>
-                <td>: {{ $order->created_at }}</td>
+                <td width="10%">Delivery Date</td>
+                <td>: {{ $order->delivery_date }} {{ $order->delivery_time }}</td>
                 <td><strong>{!! $order->status_order !!}</strong></td>
             </tr>
             <tr>

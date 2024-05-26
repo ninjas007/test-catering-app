@@ -7,29 +7,54 @@
     <div class="container" @if ($carts->count() <= 1) style="height: 80vh" @endif>
         <div class="row justify-content-center mb-4">
             <div class="col-12 px-4">
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">Total: {{ $cartTotal }}</h5>
-                                    @if ($carts->count() > 0)
-                                        <form action="{{ route('cart.checkout') }}" method="POST">
+                @if ($carts->count() > 0)
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-12">
+                                <div class="card-body">
+                                    <form action="{{ route('cart.checkout') }}" method="POST">
+                                        <div class="d-flex justify-content-between">
                                             @csrf
-                                            <button type="submit" class="btn btn-primary btn-sm">Checkout</button>
-                                        </form>
-                                    @endif
+                                            <div class="form-group">
+                                                <label for="delivery_date">Delivery Date</label>
+                                                <input type="date" class="form-control" name="delivery_date"
+                                                    value="{{ now()->format('Y-m-d') }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="delivery_time">Delivery Time</label>
+                                                <input type="time" class="form-control" name="delivery_time"
+                                                    value="{{ now()->format('H:i') }}">
+                                                @error('delivery_time')
+                                                    <div class="text-danger mt-1">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-3">Order
+                                                {{ $cartTotal }}</button>
+                                        </div>
+                                    </form>
                                 </div>
+                                @error('delivery_date')
+                                    <div class="text-danger mt-1 p-4 pt-0">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                @error('delivery_time')
+                                    <div class="text-danger mt-1 p-4 pt-0">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 @forelse ($carts as $cart)
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="{{ $cart->menu->image }}" class="rounded-start" alt="{{ $cart->menu->name }}"
-                                style="width: 100%; height: 110px; object-fit: cover">
+                                    style="width: 100%; height: 110px; object-fit: cover">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

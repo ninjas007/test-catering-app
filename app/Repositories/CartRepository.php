@@ -63,7 +63,7 @@ class CartRepository extends BaseRepository
         }
     }
 
-    public function checkout()
+    public function checkout(array $data)
     {
         try {
             DB::beginTransaction();
@@ -71,6 +71,8 @@ class CartRepository extends BaseRepository
             $order = Order::create([
                 'user_id' => $userId,
                 'status' => 'pending',
+                'delivery_date' => $data['delivery_date'],
+                'delivery_time' => $data['delivery_time'],
                 'total' => $this->getTotalCart(),
             ]);
 
