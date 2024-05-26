@@ -27,7 +27,7 @@
                 </a>
                 <a href="{{ url('customer-order') }}">
                     <button class="btn-menubar">
-                        <i class="fa fa-users menu-icon {{ $menu == 'order' ? 'menu-icon-active' : '' }}"></i>
+                        <i class="fa fa-hamburger menu-icon {{ $menu == 'order' ? 'menu-icon-active' : '' }}"></i>
                         <span class="text-icon {{ $menu == 'order' ? 'text-icon-active' : '' }}">Orders</span>
                     </button>
                 </a>
