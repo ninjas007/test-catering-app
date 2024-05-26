@@ -11,9 +11,9 @@ class MenuRepository extends BaseRepository
         parent::__construct($menu);
     }
 
-    public function getAll()
+    public function getAll($limit = 20)
     {
-        return $this->getAllWithPaginate();
+        return $this->getAllWithPaginate($limit);
     }
 
     public function getById($id)

@@ -27,5 +27,20 @@ class MenuSeeder extends Seeder
             'description' => 'Bakso dengan daging asli',
             'image' => 'img/menu/bakso.jpg',
         ]);
+
+        Menu::create([
+            'name' => 'Mie Ayam Paket Lengkap',
+            'price' => 20000,
+            'description' => 'Mie ayam dengan ayam lengkuas',
+            'image' => 'img/menu/mie-ayam.jpeg',
+        ]);
+
+        Menu::create([
+            'name' => 'Ayam Goreng Sambal Matah',
+            'price' => 20000,
+            'description' => 'Ayam goreng dengan sambal matah',
+            'image' => 'img/menu/ayam.jpg',
+        ]);
+
     }
 }

@@ -19,9 +19,9 @@ class BaseRepository
         return $this->model->withTrashed()->get();
     }
 
-    public function getAllWithPaginate()
+    public function getAllWithPaginate($limit = 20)
     {
-        return $this->model->paginate(20);
+        return $this->model->paginate($limit);
     }
 
     public function all()

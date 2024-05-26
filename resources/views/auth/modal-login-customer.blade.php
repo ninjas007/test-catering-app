@@ -36,7 +36,7 @@
                                 <i class="fa fa-sign-in"></i>&nbsp;Sign in
                             </button>
                         </form>
-                        <p class="text-center">Not registered? Join now <a href="{{ url('login') }}"
+                        <p class="text-center">Not registered? Join now <a href="{{ url('register') }}"
                                 class="text-primary">Sign up</a></p>
                     </div>
                 </div>
