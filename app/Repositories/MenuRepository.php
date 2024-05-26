@@ -39,7 +39,7 @@ class MenuRepository extends BaseRepository
     public function getAll($limit = 10)
     {
         $user = auth()->user();
-        if ($user->role == 'merchant') {
+        if ($user != null && $user->role == 'merchant') {
             return $this->model->where('merchant_id', $user->merchant->id)->paginate($limit);
         }
 
