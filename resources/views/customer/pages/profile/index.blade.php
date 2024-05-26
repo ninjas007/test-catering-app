@@ -69,21 +69,6 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label class="font-weight-bold">Gender</label>
-                        <select name="gender" class="form-control @error('gender') is-invalid @enderror">
-                            <option value="" selected disabled>Select Gender</option>
-                            <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Male</option>
-                            <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>Female</option>
-                        </select>
-                        @error('gender')
-                            <div class="text-danger mt-1">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-
-                    <div class="form-group mb-3">
                         <label class="font-weight-bold">Address</label>
                         <input type="text" name="address" class="form-control" value="{{ old('address', $user->address) }}">
                     </div>
