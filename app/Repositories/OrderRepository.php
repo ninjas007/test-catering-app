@@ -35,7 +35,9 @@ class OrderRepository extends BaseRepository
 
     public function getOrderById(int $id)
     {
-        $order = Order::where('id', $id)->with(['orderDetails'])->first();
+        $order = Order::where('id', $id)
+                ->with(['orderDetails'])
+                ->first();
 
         return $order;
     }
@@ -53,5 +55,14 @@ class OrderRepository extends BaseRepository
     public function getById($id)
     {
         return $this->find($id);
+    }
+
+    public function getOrderByCustomerId(int $orderId)
+    {
+        return $this->model
+                ->with(['orderDetails'])
+                ->where('id', $orderId)
+                ->where('user_id', auth()->user()->id)
+                ->first();
     }
 }

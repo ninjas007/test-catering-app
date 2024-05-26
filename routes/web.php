@@ -43,6 +43,7 @@ Route::middleware(['auth', 'customer'])->group(function () {
 
     // order
     Route::get('/customer-order', [OrderCustomer::class, 'index']);
+    Route::get('/print-invoice', [OrderCustomer::class, 'print']);
 });
 
 // merchant

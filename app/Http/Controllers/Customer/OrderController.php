@@ -23,4 +23,12 @@ class OrderController extends Controller
 
         return view('customer.pages.order.index', $data);
     }
+
+    public function print()
+    {
+        $orderId = request()->get('order_id');
+        $data['order'] = $this->orderRepository->getOrderByCustomerId($orderId);
+
+        return view('customer.pages.order.print', $data);
+    }
 }
