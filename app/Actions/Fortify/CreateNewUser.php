@@ -46,7 +46,7 @@ class CreateNewUser implements CreatesNewUsers
             ])->validate();
 
             Merchant::create([
-                'user_id' => $user->id,
+                'owner_id' => $user->id,
                 'name' => $input['merchant_name']
             ]);
         }
