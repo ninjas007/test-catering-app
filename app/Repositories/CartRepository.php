@@ -13,9 +13,27 @@ class CartRepository extends BaseRepository
 
     public function getTotalCart()
     {
+        $userId = auth()->id(); // Lebih singkat daripada auth()->user()->id
+        $total = $this->model->where('user_id', $userId)->with('menu')->get()
+                        ->sum(function($cart) {
+                            return $cart->menu->price * $cart->qty;
+                        });
+
+        return $total;
+    }
+
+    public function getCountCart()
+    {
         $userId = auth()->user()->id;
 
         return $this->model->where('user_id', $userId)->count();
+    }
+
+    public function addQtyCart(int $id)
+    {
+        $data['qty'] = $this->model->find($id)->qty + 1;
+
+        return $this->update($id, $data);
     }
 
     public function saveCart(array $data)

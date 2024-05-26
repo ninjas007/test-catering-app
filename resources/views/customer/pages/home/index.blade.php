@@ -21,7 +21,7 @@
                                     <p class="card-text"><strong>Price: </strong>{{ $menu->price }}
                                         @if (auth()->check() && auth()->user()->role == 'customer')
                                             <a href="javascript:void(0)" data-id="{{ $menu->id }}"
-                                                onclick="order({{ $menu->id }})" class="btn btn-primary btn-sm ms-2">
+                                                onclick="addCart({{ $menu->id }})" class="btn btn-primary btn-sm ms-2">
                                                 <i class="fa fa-plus"></i> Add
                                             </a>
                                         @endif
@@ -42,9 +42,9 @@
 
 @section('js')
     <script type="text/javascript">
-        function order(menuId) {
+        function addCart(menuId) {
             $.ajax({
-                url: "{{ route('customer.cart') }}",
+                url: "{{ route('saveCart') }}",
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
@@ -59,8 +59,6 @@
                             button: "Ok",
                         });
 
-                        // set total cart to localStorage
-                        localStorage.setItem('cart', JSON.stringify(result.total_cart));
                         getCart();
                     }
                 },

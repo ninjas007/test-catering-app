@@ -14,4 +14,20 @@ class Cart extends Model
         'menu_id',
         'qty',
     ];
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getTotalAttribute()
+    {
+        return $this->qty * $this->menu->price;
+    }
+
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\Merchant\MenuController;
 use App\Http\Controllers\Merchant\MerchantController;
 use App\Http\Controllers\Merchant\OrderController;
 use App\Http\Controllers\Merchant\ProfileController;
-use App\Http\Controllers\Customer\CustomerController as CustomerFe;
+use App\Http\Controllers\Customer\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +33,13 @@ Route::middleware(['auth', 'customer'])->group(function () {
         Route::post('/save', [AccountController::class, 'save'])->name('account.save');
     });
 
-    // customer
-    Route::prefix('customer')->group(function () {
-        // cart
-        Route::get('/cartTotal', [CustomerFe::class, 'cartTotal'])->name('cartTotal');
-        Route::post('/cart', [CustomerFe::class, 'cart'])->name('customer.cart');
-    });
+    // cart
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::get('/cartTotal', [CartController::class, 'cartTotal'])->name('cartTotal');
+    Route::post('/saveCart', [CartController::class, 'cart'])->name('saveCart');
+    Route::post('/addQtyCart', [CartController::class, 'addQtyCart'])->name('addQtyCart');
+    Route::post('/removeCart', [CartController::class, 'removeCart'])->name('removeCart');
+
 });
 
 // merchant
