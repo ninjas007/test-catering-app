@@ -95,8 +95,8 @@
                 </div>
 
                 <div class="form-group" id="merchantForm" style="display: none">
-                    <label for="merchant_name">Merchant Name</label>
-                    <input type="text" class="form-control  @error('merchant_name') is-invalid @enderror" name="merchant_name" value="{{ old('merchant_name') }}" required>
+                    <label for="merchantName">Merchant Name</label>
+                    <input type="text" class="form-control  @error('merchant_name') is-invalid @enderror" name="merchant_name" id="merchantName" value="{{ old('merchant_name') }}">
                 </div>
 
                 @error('merchant_name')
@@ -122,6 +122,10 @@
 <script>
     function merchantForm(display) {
         document.getElementById('merchantForm').style.display = display;
+
+        if (display == 'none') {
+            document.getElementById('merchantName').value = '';
+        }
     }
 </script>
 @endpush
