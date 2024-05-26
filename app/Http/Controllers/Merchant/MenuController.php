@@ -22,10 +22,15 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['menus'] = $this->menuRepository->getAll();
         $data['type_menu'] = $this->typeMenu;
+
+        if ($request->has('search')) {
+            $data['menus'] = $this->menuRepository->searchMenu($request->search);
+        } else {
+            $data['menus'] = $this->menuRepository->getAll();
+        }
 
         return view('merchant.pages.menu.index', $data);
     }

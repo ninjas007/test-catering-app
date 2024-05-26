@@ -22,9 +22,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['orders'] = $this->orderRepository->getAllOrders()->paginate(20);
+        $data['orders'] = $this->orderRepository->getAllOrders($request->search);
         $data['type_menu'] = $this->typeMenu;
 
         return view('merchant.pages.order.index', $data);

@@ -15,7 +15,7 @@ class OrderSeeder extends Seeder
     public function run()
     {
         Order::create([
-            'user_id' => 2,
+            'user_id' => 3,
             'status' => 'pending',
             'delivery_date' => date('Y-m-d', strtotime('+2 days')),
             'delivery_time' => date('H:i', strtotime('+2 days')),
@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
         ]);
 
         Order::create([
-            'user_id' => 3,
+            'user_id' => 4,
             'status' => 'completed',
             'delivery_date' => date('Y-m-d', strtotime('+2 days')),
             'delivery_time' => date('H:i', strtotime('+2 days')),

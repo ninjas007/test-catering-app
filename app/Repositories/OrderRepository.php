@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Order;
+use App\Models\User;
 
 class OrderRepository extends BaseRepository
 {
@@ -27,11 +28,22 @@ class OrderRepository extends BaseRepository
         return $orders;
     }
 
-    public function getAllOrders()
+    public function getAllOrders(string $search = null, int $limit = 10)
     {
-        $orders = Order::with(['orderDetails'])->orderBy('id', 'desc')->withTrashed();
+        $orders = Order::with(['orderDetails'])
+                    ->orderBy('id', 'desc')
+                    ->withTrashed();
 
-        return $orders;
+        if ($search) {
+            $userIds = User::where('name', 'like', '%'.$search.'%')
+                        ->pluck('id')
+                        ->toArray();
+
+            $orders->where('user_id', $userIds)
+                ->orWhere('status', 'like', '%'.$search.'%');
+        }
+
+        return $orders->paginate($limit);
     }
 
     public function getOrderById(int $id)
