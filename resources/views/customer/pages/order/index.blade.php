@@ -42,6 +42,10 @@
                                         <td>Total</td>
                                         <td colspan="2">: {{ $order->orderDetails->sum('subtotal') }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td colspan="2">: {!! $order->status_order !!}</td>
+                                    </tr>
                                 </table>
                             </div>
                             <div class="col-12 p-3 pt-0">

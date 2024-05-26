@@ -21,6 +21,7 @@ class OrderRepository extends BaseRepository
         $orders = Order::with(['orderDetails'])
                 ->orderBy('id', 'desc')
                 ->where('user_id', auth()->user()->id)
+                ->withTrashed()
                 ->paginate($limit);
 
         return $orders;
@@ -61,7 +62,8 @@ class OrderRepository extends BaseRepository
     {
         $user =  $this->model
                 ->with(['orderDetails'])
-                ->where('id', $orderId);
+                ->where('id', $orderId)
+                ->withTrashed();
 
         if (auth()->user()->role == 'merchant') {
             return $user->first();
