@@ -20,8 +20,8 @@ class OrderRepository extends BaseRepository
     {
         $orders = Order::with(['orderDetails'])
                 ->orderBy('id', 'desc')
-                ->limit($limit)
-                ->where('user_id', auth()->user()->id);
+                ->where('user_id', auth()->user()->id)
+                ->paginate($limit);
 
         return $orders;
     }

@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    <div class="container" @if ($orders->count() <= 3) style="height: 80vh" @endif>
+    <div class="container" @if ($orders->count() <= 2) style="height: 80vh" @endif>
         <div class="row justify-content-center mb-4">
             <div class="col-12 px-4">
                 @forelse ($orders as $order)
