@@ -29,6 +29,10 @@ class OrderController extends Controller
         $orderId = request()->get('order_id');
         $data['order'] = $this->orderRepository->getOrderByCustomerId($orderId);
 
+        if (!$data['order']) {
+            return abort(404);
+        }
+
         return view('customer.pages.order.print', $data);
     }
 }

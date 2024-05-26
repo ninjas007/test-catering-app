@@ -55,6 +55,10 @@
                                                 <td>{{ $order->total }}</td>
                                                 <td class="text-center">{!! $order->status_order !!}</td>
                                                 <td class="text-center">
+                                                    <a href="{{ url('print-invoice?order_id=' . $order->id . '') }}" target="_blank"
+                                                        class="btn btn-sm btn-info">
+                                                        <i class="fa fa-print"></i>
+                                                    </a>
                                                     @if ($order->status == 'pending')
                                                         <a href="{{ url('merchant/order/complete', $order->id) }}" class="btn btn-info btn-sm" title="Set Complete">
                                                             <i class="fa fa-check"></i>

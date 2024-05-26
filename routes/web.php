@@ -43,7 +43,6 @@ Route::middleware(['auth', 'customer'])->group(function () {
 
     // order
     Route::get('/customer-order', [OrderCustomer::class, 'index']);
-    Route::get('/print-invoice', [OrderCustomer::class, 'print']);
 });
 
 // merchant
@@ -77,3 +76,5 @@ Route::prefix('merchant')
         Route::resource('order', OrderController::class);
         Route::get('/order/complete/{id}', [OrderController::class, 'complete']);
 });
+
+Route::get('/print-invoice', [OrderCustomer::class, 'print']);

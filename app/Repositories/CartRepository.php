@@ -22,7 +22,7 @@ class CartRepository extends BaseRepository
 
     public function getTotalCart()
     {
-        $userId = auth()->id(); // Lebih singkat daripada auth()->user()->id
+        $userId = auth()->id();
         $total = $this->model->where('user_id', $userId)->with('menu')->get()
                         ->sum(function($cart) {
                             return $cart->menu->price * $cart->qty;
@@ -95,7 +95,6 @@ class CartRepository extends BaseRepository
         } catch (\Throwable $th) {
             DB::rollBack();
 
-            dd($th->getMessage());
             return false;
         }
     }

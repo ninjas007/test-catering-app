@@ -4,7 +4,7 @@
 @section('description', '')
 
 @section('content')
-    <div class="container" @if ($carts->count() <= 3) style="height: 80vh" @endif>
+    <div class="container" @if ($carts->count() <= 1) style="height: 80vh" @endif>
         <div class="row justify-content-center mb-4">
             <div class="col-12 px-4">
                 <div class="card mb-3">

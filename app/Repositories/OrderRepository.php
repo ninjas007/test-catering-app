@@ -59,10 +59,14 @@ class OrderRepository extends BaseRepository
 
     public function getOrderByCustomerId(int $orderId)
     {
-        return $this->model
+        $user =  $this->model
                 ->with(['orderDetails'])
-                ->where('id', $orderId)
-                ->where('user_id', auth()->user()->id)
-                ->first();
+                ->where('id', $orderId);
+
+        if (auth()->user()->role == 'merchant') {
+            return $user->first();
+        }
+
+        return $user->where('user_id', auth()->user()->id)->first();
     }
 }
