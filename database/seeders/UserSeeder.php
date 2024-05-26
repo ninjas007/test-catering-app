@@ -38,5 +38,16 @@ class UserSeeder extends Seeder
             'is_active' => 1,
             'avatar' => 'img/avatar/avatar-1.png',
         ]);
+
+        User::create([
+            'name' => 'Customer 2',
+            'email' => 'customer2@gmail.com',
+            'password' => Hash::make('customer2'),
+            'role' => 'customer',
+            'gender' => 'female',
+            'email_verified_at' => now(),
+            'is_active' => 1,
+            'avatar' => 'img/avatar/avatar-1.png',
+        ]);
     }
 }

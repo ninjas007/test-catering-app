@@ -13,7 +13,7 @@ class MenuRepository extends BaseRepository
 
     public function getAll()
     {
-        return $this->all();
+        return $this->getAllWithPaginate();
     }
 
     public function getById($id)

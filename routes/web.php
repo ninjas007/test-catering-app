@@ -57,8 +57,9 @@ Route::prefix('merchant')
         Route::resource('menu', MenuController::class);
 
         // customer
-        Route::resource('customer', CustomerController::class);
+        // Route::resource('customer', CustomerController::class);
 
         // order
         Route::resource('order', OrderController::class);
+        Route::get('/order/complete/{id}', [OrderController::class, 'complete']);
 });

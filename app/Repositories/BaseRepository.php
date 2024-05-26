@@ -14,6 +14,16 @@ class BaseRepository
         $this->model = $model;
     }
 
+    public function getAllWithTrashed()
+    {
+        return $this->model->withTrashed()->get();
+    }
+
+    public function getAllWithPaginate()
+    {
+        return $this->model->paginate(20);
+    }
+
     public function all()
     {
         return $this->model->all();

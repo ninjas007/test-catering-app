@@ -18,7 +18,7 @@ class CreateMenusTable extends Migration
             $table->string('name', 100);
             $table->string('description');
             $table->string('image')->default('img/menu/default.jpg');
-            $table->decimal('price', 12, 0);
+            $table->decimal('price', 15, 0);
             $table->timestamps();
         });
     }

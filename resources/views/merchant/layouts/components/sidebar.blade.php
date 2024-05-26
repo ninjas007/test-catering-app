@@ -27,12 +27,12 @@
                  </ul>
              </li>
          </ul>
-        <ul class="sidebar-menu">
+        {{-- <ul class="sidebar-menu">
             <li class="nav-item {{ $type_menu === 'customer' ? 'active' : '' }}">
                 <a href="{{ url('merchant/customer') }}"
                     class="nav-link"><i class="fas fa-users"></i><span>Customer</span></a>
                 </ul>
             </li>
-        </ul>
+        </ul> --}}
     </aside>
 </div>
