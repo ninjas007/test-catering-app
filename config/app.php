@@ -3,7 +3,10 @@
 use Laravel\Fortify\Features;
 
 // get file json from settings/app.json
-$app = json_decode(file_get_contents(base_path('settings/app.json')), true);
+$app = [];
+if (file_exists(base_path('settings/app.json'))) {
+    $app = json_decode(file_get_contents(base_path('settings/app.json')), true);
+}
 
 return [
 
