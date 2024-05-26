@@ -18,7 +18,7 @@
                         class="form-control @error('name')
                         is-invalid
                     @enderror"
-                        name="name" autofocus required>
+                        name="name" autofocus required value="{{ old('name') }}">
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -32,7 +32,7 @@
                         class="form-control @error('email')
                         is-invalid
                     @enderror"
-                        name="email" required>
+                        name="email" required value="{{ old('email') }}">
                     @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -80,20 +80,30 @@
                     <label for="role">Register As</label>
                     <div class="d-flex justify-content-start">
                         <div class="form-check mr-5">
-                            <input class="form-check-input" type="radio" name="role" id="merchant" value="merchant" required>
+                            <input class="form-check-input" type="radio" name="role" id="merchant" value="merchant" required onclick="merchantForm('block')">
                             <label class="form-check-label" for="merchant">
                                 Merchant
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="customer" value="customer" required>
+                            <input class="form-check-input" type="radio" name="role" id="customer" value="customer" required onclick="merchantForm('none')">
                             <label class="form-check-label" for="customer">
                                 Customer
                             </label>
                         </div>
                     </div>
-
                 </div>
+
+                <div class="form-group" id="merchantForm" style="display: none">
+                    <label for="merchant_name">Merchant Name</label>
+                    <input type="text" class="form-control  @error('merchant_name') is-invalid @enderror" name="merchant_name" value="{{ old('merchant_name') }}" required>
+                </div>
+
+                @error('merchant_name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
@@ -109,4 +119,9 @@
 @endsection
 
 @push('scripts')
+<script>
+    function merchantForm(display) {
+        document.getElementById('merchantForm').style.display = display;
+    }
+</script>
 @endpush

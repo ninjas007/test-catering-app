@@ -9,7 +9,7 @@
                         class="form-control @error('name')
                     is-invalid
                 @enderror"
-                        name="name" value="{{ $merchant->name }}">
+                        name="name" value="{{ $merchant->name ?? '' }}">
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -19,17 +19,17 @@
 
                 <div class="form-group">
                     <label>Contact</label>
-                    <input type="text" class="form-control" name="contact" value="{{ $merchant->contact }}">
+                    <input type="text" class="form-control" name="contact" value="{{ $merchant->contact ?? '' }}">
                 </div>
 
                 <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control" name="address" value="{{ $merchant->address }}">
+                    <input type="text" class="form-control" name="address" value="{{ $merchant->address ?? '' }}">
                 </div>
 
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" class="form-control" name="description" value="{{ $merchant->description }}">
+                    <input type="text" class="form-control" name="description" value="{{ $merchant->description ?? '' }}">
                 </div>
             </div>
         </div>
