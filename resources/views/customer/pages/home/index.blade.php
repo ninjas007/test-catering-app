@@ -19,9 +19,12 @@
                                     <h5 class="card-title">{{ $menu->name }}</h5>
                                     <p class="card-text">{{ $menu->description }}</p>
                                     <p class="card-text"><strong>Price: </strong>{{ $menu->price }}
-                                        <a href="javascript:void(0)" data-id="{{ $menu->id }}" onclick="addToCart({{ $menu->id }})" class="btn btn-primary btn-sm ms-2">
-                                            <i class="fa fa-plus"></i> Add
-                                        </a>
+                                        @if (auth()->check() && auth()->user()->role == 'customer')
+                                            <a href="javascript:void(0)" data-id="{{ $menu->id }}"
+                                                onclick="order({{ $menu->id }})" class="btn btn-primary btn-sm ms-2">
+                                                <i class="fa fa-plus"></i> Add
+                                            </a>
+                                        @endif
                                     </p>
                                 </div>
                             </div>
@@ -39,7 +42,37 @@
 
 @section('js')
     <script type="text/javascript">
-        function addToCart() {
+        function order(menuId) {
+            $.ajax({
+                url: "{{ route('customer.cart') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    menu_id: menuId
+                },
+                success: function(result) {
+                    if (result.status == 'success') {
+                        swal({
+                            title: "Berhasil!",
+                            text: `${result.msg}`,
+                            icon: "success",
+                            button: "Ok",
+                        });
+
+                        // set total cart to localStorage
+                        localStorage.setItem('cart', JSON.stringify(result.total_cart));
+                        getCart();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    swal({
+                        title: "Error!",
+                        text: `Something wrong, please try again`,
+                        icon: "error",
+                        button: "Ok",
+                    });
+                }
+            })
         }
     </script>
 @endsection

@@ -19,8 +19,6 @@ class AccountRequest extends FormRequest
             'email' => 'required|email',
             'phone' => 'nullable|min:10|max:20',
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:700',
-            'gender' => 'nullable|in:male,female',
-            'birthday' => 'nullable|date_format:Y-m-d',
             'password' => [
                 'nullable',
                 'string',

@@ -8,6 +8,7 @@ use App\Http\Controllers\Merchant\MenuController;
 use App\Http\Controllers\Merchant\MerchantController;
 use App\Http\Controllers\Merchant\OrderController;
 use App\Http\Controllers\Merchant\ProfileController;
+use App\Http\Controllers\Customer\CustomerController as CustomerFe;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,17 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'customer'])->group(function () {
+    // account
     Route::prefix('account')->group(function () {
         Route::get('/profile', [AccountController::class, 'index']);
         Route::post('/save', [AccountController::class, 'save'])->name('account.save');
+    });
+
+    // customer
+    Route::prefix('customer')->group(function () {
+        // cart
+        Route::get('/cartTotal', [CustomerFe::class, 'cartTotal'])->name('cartTotal');
+        Route::post('/cart', [CustomerFe::class, 'cart'])->name('customer.cart');
     });
 });
 

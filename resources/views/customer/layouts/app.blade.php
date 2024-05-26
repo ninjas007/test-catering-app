@@ -66,6 +66,20 @@
     {{-- Sweet Alert --}}
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
+    <script>
+        function getCart() {
+            $.ajax({
+                url: "{{ route('cartTotal') }}",
+                type: "GET",
+                success: function(result) {
+                    $('#cartTotal').text(result)
+                }
+            })
+        }
+
+        getCart()
+    </script>
+
     {{-- Custom JS --}}
     @yield('js')
 
@@ -97,14 +111,6 @@
 
     {{-- show password --}}
     <script src="{{ asset('js/js-password.js') }}"></script>
-
-    {{-- TinyMCE --}}
-    <script src="https://cdn.tiny.cloud/1/fioab1f7iscuty6onrm6ezlq795cnlvwjy81btkvag3piuoj/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: 'textarea.tiny'
-        });
-    </script>
 </body>
 
 </html>

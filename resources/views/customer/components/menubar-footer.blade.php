@@ -16,6 +16,9 @@
         @else
             <a href="#">
                 <button class="btn-menubar">
+                    <div style="position: relative; top: 0; right: 0">
+                        <span id="cartTotal" style="background-color: #f1f1f1; border-radius: 50%; padding: 2px 5px; position: absolute; top: -5px">0</span>
+                    </div>
                     <i class="fa fa-shopping-cart menu-icon"></i>
                     <span class="text-icon">Cart</span>
                 </button>
@@ -23,7 +26,7 @@
             <a href="#">
                 <button class="btn-menubar">
                     <i class="fa fa-users menu-icon"></i>
-                    <span class="text-icon">History</span>
+                    <span class="text-icon">Orders</span>
                 </button>
             </a>
             <a href="javascript:void(0)">
