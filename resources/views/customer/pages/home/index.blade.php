@@ -4,7 +4,7 @@
 @section('description', '')
 
 @section('content')
-    <div class="container" @if ($menus->count() <= 0) style="height: 80vh" @endif>
+    <div class="container" @if ($menus->count() <= 3) style="height: 80vh" @endif>
         <div class="row justify-content-center mb-2">
             <div class="col-12 px-4">
                 @forelse ($menus as $menu)
@@ -12,7 +12,7 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="{{ $menu->image }}" class="rounded-start" alt="{{ $menu->name }}"
-                                    style="width: 100%; height: 100%">
+                                    style="width: 100%; height: 110px; object-fit: cover">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
