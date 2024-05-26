@@ -3,12 +3,12 @@
 use App\Http\Controllers\Customer\AccountController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Merchant\CustomerController;
 use App\Http\Controllers\Merchant\MenuController;
 use App\Http\Controllers\Merchant\MerchantController;
 use App\Http\Controllers\Merchant\OrderController;
 use App\Http\Controllers\Merchant\ProfileController;
 use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\Customer\OrderController as OrderCustomer;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,9 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::post('/addQtyCart', [CartController::class, 'addQtyCart'])->name('addQtyCart');
     Route::post('/removeCart', [CartController::class, 'removeCart'])->name('removeCart');
     Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+    // order
+    Route::get('/customer-order', [OrderCustomer::class, 'index']);
 });
 
 // merchant

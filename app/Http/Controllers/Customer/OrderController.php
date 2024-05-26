@@ -17,9 +17,10 @@ class OrderController extends Controller
 
     public function index()
     {
-        $data['menu'] = 'cart';
+        $data['menu'] = 'order';
         $data['orders'] = $this->orderRepository->getAllWithPaginate(10);
+        $data['orderTotal'] = $this->orderRepository->getTotal();
 
-        return view('customer.pages.cart.index', $data);
+        return view('customer.pages.order.index', $data);
     }
 }

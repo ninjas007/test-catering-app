@@ -25,7 +25,7 @@
                         <span class="text-icon">Cart</span>
                     </button>
                 </a>
-                <a href="#">
+                <a href="{{ url('customer-order') }}">
                     <button class="btn-menubar">
                         <i class="fa fa-users menu-icon"></i>
                         <span class="text-icon">Orders</span>

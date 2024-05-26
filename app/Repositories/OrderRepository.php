@@ -11,6 +11,21 @@ class OrderRepository extends BaseRepository
         parent::__construct($order);
     }
 
+    public function getTotal()
+    {
+        return $this->model->sum('total');
+    }
+
+    public function getOrderCustomer($limit = 10)
+    {
+        $orders = Order::with(['orderDetails'])
+                ->orderBy('id', 'desc')
+                ->limit($limit)
+                ->where('user_id', auth()->user()->id);
+
+        return $orders;
+    }
+
     public function getAllOrders()
     {
         $orders = Order::with(['orderDetails'])->orderBy('id', 'desc')->withTrashed();
