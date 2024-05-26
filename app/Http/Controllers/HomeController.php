@@ -13,10 +13,15 @@ class HomeController extends Controller
         $this->menuRepository = $menuRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $data['menu'] = 'home';
-        $data['menus'] = $this->menuRepository->getAll(10);
+
+        if ($request->search !== null) {
+            $data['menus'] = $this->menuRepository->search($request->search);
+        } else {
+            $data['menus'] = $this->menuRepository->getAll(10);
+        }
 
         return view('customer.pages.home.index', $data);
     }

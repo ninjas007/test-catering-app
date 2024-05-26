@@ -19,6 +19,7 @@ class MenuSeeder extends Seeder
             'price' => 15000,
             'description' => 'Mie Goreng dengan kecap manis dan Es teh tawar',
             'image' => 'img/menu/mie.jpg',
+            'merchant_id' => 1
         ]);
 
         Menu::create([
@@ -26,6 +27,7 @@ class MenuSeeder extends Seeder
             'price' => 20000,
             'description' => 'Bakso dengan daging asli',
             'image' => 'img/menu/bakso.jpg',
+            'merchant_id' => 1
         ]);
 
         Menu::create([
@@ -33,6 +35,7 @@ class MenuSeeder extends Seeder
             'price' => 20000,
             'description' => 'Mie ayam dengan ayam lengkuas',
             'image' => 'img/menu/mie-ayam.jpeg',
+            'merchant_id' => 1
         ]);
 
         Menu::create([
@@ -40,6 +43,7 @@ class MenuSeeder extends Seeder
             'price' => 20000,
             'description' => 'Ayam goreng dengan sambal matah',
             'image' => 'img/menu/ayam.jpg',
+            'merchant_id' => 2
         ]);
 
     }

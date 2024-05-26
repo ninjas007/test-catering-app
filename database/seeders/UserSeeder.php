@@ -29,6 +29,19 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Merchant User 2',
+            'email' => 'merchant@gmail.com',
+            'password' => Hash::make('merchant'),
+            'role' => 'merchant',
+            'email_verified_at' => now(),
+            'gender' => 'male',
+            'phone' => '08334343332',
+            'address' => 'Jln. panjang menuju langit biru 2',
+            'is_active' => 1,
+            'avatar' => 'img/avatar/avatar-1.png',
+        ]);
+
+        User::create([
             'name' => 'Customer 1',
             'email' => 'customer1@gmail.com',
             'password' => Hash::make('customer1'),

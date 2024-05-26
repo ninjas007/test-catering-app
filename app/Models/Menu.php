@@ -14,5 +14,11 @@ class Menu extends Model
         'description',
         'image',
         'price',
+        'merchant_id',
     ];
+
+    public function merchant()
+    {
+        return $this->belongsTo(Merchant::class);
+    }
 }

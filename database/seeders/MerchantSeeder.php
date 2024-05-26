@@ -21,5 +21,13 @@ class MerchantSeeder extends Seeder
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
             'owner_id' => 1
         ]);
+
+        Merchant::create([
+            'name' => 'Merchant 2',
+            'address' => 'Jl. Cempaka 2 Putih No. 10',
+            'contact' => '2323232323',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            'owner_id' => 2
+        ]);
     }
 }

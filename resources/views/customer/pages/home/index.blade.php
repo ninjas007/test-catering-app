@@ -5,9 +5,9 @@
 
 @section('content')
     <div class="container" @if ($menus->count() <= 3) style="height: 80vh" @endif>
-        <div class="row justify-content-center mb-2">
+        <div class="row justify-content-center mb-5">
             <div class="col-12 px-4">
-                <form action="" method="GET">
+                <form action="{{ url()->current() }}" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" name="search" class="form-control" placeholder="Search menu or cathering"
                             value="{{ request('search') }}">
@@ -20,8 +20,13 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ $menu->image }}" class="rounded-start" alt="{{ $menu->name }}"
-                                    style="width: 100%; height: 110px; object-fit: cover">
+                                <div class="border p-2 text-center">
+                                    {{ $menu->merchant->name }}
+                                </div>
+                                <div>
+                                    <img src="{{ $menu->image }}" class="rounded-start" alt="{{ $menu->name }}"
+                                        style="width: 100%; height: 100px; object-fit: cover">
+                                </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

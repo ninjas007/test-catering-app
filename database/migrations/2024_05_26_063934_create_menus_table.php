@@ -19,6 +19,7 @@ class CreateMenusTable extends Migration
             $table->string('description');
             $table->string('image')->default('img/menu/default.jpg');
             $table->decimal('price', 15, 0);
+            $table->integer('merchant_id');
             $table->timestamps();
         });
     }
