@@ -4,10 +4,10 @@
 @section('description', '')
 
 @section('content')
-    <div class="container">
+    <div class="container" @if ($menus->count() <= 0) style="height: 80vh" @endif>
         <div class="row justify-content-center mb-2">
             <div class="col-12 px-4">
-                @foreach ($menus as $menu)
+                @forelse ($menus as $menu)
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -30,11 +30,15 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
 
-                <div class="d-flex justify-content-center mt-3">
-                    {{ $menus->links() }}
-                </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        {{ $menus->links() }}
+                    </div>
+                @empty
+                    <div class="text-center d-flex justify-content-center align-items-center" style="margin-top: 20px">
+                        <img src="{{ asset('img/empty-cart.png') }}" width="300" alt="">
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
