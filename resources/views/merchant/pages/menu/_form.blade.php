@@ -3,6 +3,7 @@
     @if(isset($menu))
         @method('PUT')
     @endif
+    <input type="hidden" name="merchant_id" value="{{ auth()->user()->merchant->id }}">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', isset($menu) ? $menu->name : '') }}">
